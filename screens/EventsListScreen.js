@@ -23,6 +23,7 @@ const EventsListScreen = ({ navigation }) => {
     return (
       <TouchableOpacity
         onPress={() => {
+          console.log("This is embedded", item._embedded.venues[0].name)
           navigation.navigate("Video Viewer", item);
         }}>
         <ListItem key={index}>
@@ -33,6 +34,7 @@ const EventsListScreen = ({ navigation }) => {
           />
           <ListItem.Content>
             <ListItem.Title>{item.name}</ListItem.Title>
+            <ListItem.Subtitle>{item._embedded.venues[0].name}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron />
         </ListItem>

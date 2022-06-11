@@ -3,6 +3,8 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import EventsListScreen from "./screens/EventsListScreen";
 import MapsViewerScreen from "./screens/MapsViewerScreen";
+import LoginScreen from "./screens/LoginScreen";
+import SignUpScreen from './screens/SignUpScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function App() {
@@ -10,12 +12,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name = "Login" component={LoginScreen}/>
+        <Stack.Screen name = "SignUp" component={SignUpScreen}/>
         <Stack.Screen
           name="Event List"
           component={EventsListScreen}
           options={{ title: "LinkApp" }}
         />
-        <Stack.Screen name="Video Viewer" component={MapsViewerScreen} />
+        <Stack.Screen name="Video Viewer" options={{headerShown:false}} component={MapsViewerScreen} />
+    
       </Stack.Navigator>
     </NavigationContainer>
   );

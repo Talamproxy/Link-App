@@ -18,9 +18,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.linkapp.events",
+      "supportsTablet": true,
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.linkapp.events",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
