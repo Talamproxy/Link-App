@@ -6,6 +6,7 @@ import MapsViewerScreen from "./screens/MapsViewerScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from './screens/SignUpScreen';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Wishlist from "./screens/Wishlist";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -17,10 +18,10 @@ export default function App() {
         <Stack.Screen
           name="Event List"
           component={EventsListScreen}
-          options={{ title: "LinkApp" }}
+          options={{ title: "Link-Up" }}
         />
-        <Stack.Screen name="Video Viewer" options={{headerShown:false}} component={MapsViewerScreen} />
-    
+        <Stack.Screen name="Map Viewer"  component={MapsViewerScreen} />
+     <Stack.Screen name="Wishlist"  component={Wishlist} />
       </Stack.Navigator>
     </NavigationContainer>
   );

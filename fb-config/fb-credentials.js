@@ -2,6 +2,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { getDatabase, push, ref,onValue, remove} from "firebase/database";
 // import * as firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth';
 
@@ -32,6 +33,44 @@ if (firebase.apps.length===0){
 }
 
 const auth=firebase.auth()
+export function initEventsDB(){
+  initializeApp(firebaseConfig);
+} 
+export function storeEventsItem(item){
+
+  const db = getDatabase();
+  const reference=ref(db, "savedEvents/");
+  //Automatically generates a key
+  push(reference, item);
+}
+export function setupEventsListener(updateFunc){
+
+  const db = getDatabase();
+  const reference=ref(db, `savedEvents/`);
+  onValue(reference, (snapshot)=>{
+      console.log("Data Listener Fires Up with", snapshot);
+      if(snapshot?.val()){
+          //
+          const fbObject = snapshot.val();
+          const newArray=[];
+         
+          Object.keys(fbObject).map((key, index)=>{
+              console.log(key, "||", index, "||", fbObject[key]);
+               newArray.push({...fbObject[key], id: key});
+          });
+          updateFunc(newArray);
+      }else{
+          updateFunc([]);
+      }
+  })
+  
+  }
+
+  export function deleteEvent(item){
+    const db=getDatabase();
+    const reference = ref(db, `savedEvents/${item.id}`);
+    remove(reference);
+} 
 
 export {auth};
 // const app = initializeApp(firebaseConfig);

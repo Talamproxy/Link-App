@@ -20,9 +20,9 @@ const EventsListScreen = ({ navigation }) => {
             navigation.navigate("Wishlist");
             
         }}>
-
+ <MaterialIcons name="favorite" size={30} color="red" /> 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <MaterialIcons name="favorite" size={30} color="red" /> <Text>Wishlist</Text></View>
+         <Text>Wishlist</Text></View>
 
         </TouchableOpacity>
         ),

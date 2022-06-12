@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -12,15 +12,26 @@ import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import { auth } from '../fb-config/fb-credentials';
 
-
-
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const signupHandler=()=>{
-    auth.createUserWithEmailAndPassword(email, password).then(userCredentials=>{
+
+
+  useEffect(()=>{
+  const unsub =  auth.onAuthStateChanged(user=>{
+      if(user){
+        navigation.navigate("Event List");
+      }
+    })
+
+    return unsub;
+  },[])
+
+
+  const signinHandler=()=>{
+    auth.signInWithEmailAndPassword(email, password).then(userCredentials=>{
       const user=userCredentials.user;
-      console.log(user.user)
+      // console.log("Logged in with: ",user.email)
     }).catch(error=>alert(error.message))
   }
 
@@ -53,7 +64,7 @@ const LoginScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle="Sign In"
-       onPress={signupHandler}
+       onPress={signinHandler}
       />
 
 
