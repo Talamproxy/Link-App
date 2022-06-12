@@ -3,10 +3,48 @@ import { Image, ListItem } from "react-native-elements";
 import React, { useEffect, useState } from 'react';
 import { BaseRouter } from '@react-navigation/native';
 import { getEvents } from '../api/TMServer'
+import { auth } from '../fb-config/fb-credentials';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const EventsListScreen = ({ navigation }) => {
 
   const [events, setEvents] = useState([]);
+  const email="sapna@gmail.com";
+  // const email=auth.currentUser?.email;
+
+  useEffect(()=>{
+    navigation.setOptions({
+    headerRight:()=>(
+        <TouchableOpacity
+        onPress={()=>{
+            navigation.navigate("Wishlist");
+            
+        }}>
+
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <MaterialIcons name="favorite" size={30} color="red" /> <Text>Wishlist</Text></View>
+
+        </TouchableOpacity>
+        ),
+        // headerLeft:()=>(
+        //     <TouchableOpacity
+        //     onPress={()=>{
+        //         if(display==="All"){
+        //             setDisplay("Not Done");
+        //         } else if(display==="Not Done"){
+        //             setDisplay("Done");
+        //         } else{
+        //             setDisplay("All");
+        //         }
+                
+        //     }}>
+        //        <Text style={styles.buttonStyle}>{display}</Text>
+        //     </TouchableOpacity>
+        //     ),
+
+    });
+
+});
 
   useEffect(() => {
     getEvents((data) => {
@@ -24,7 +62,7 @@ const EventsListScreen = ({ navigation }) => {
       <TouchableOpacity
         onPress={() => {
           console.log("This is embedded", item._embedded.venues[0].name)
-          navigation.navigate("Video Viewer", item);
+          navigation.navigate("Map Viewer", item); 
         }}>
         <ListItem key={index}>
 
