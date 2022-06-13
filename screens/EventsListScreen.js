@@ -5,12 +5,21 @@ import { BaseRouter } from '@react-navigation/native';
 import { getEvents } from '../api/TMServer'
 import { auth } from '../fb-config/fb-credentials';
 import { MaterialIcons } from '@expo/vector-icons';
+import { SimpleLineIcons } from '@expo/vector-icons'; 
+import Toast from 'react-native-root-toast';
 
 const EventsListScreen = ({ navigation }) => {
 
   const [events, setEvents] = useState([]);
   // const email="sapna@gmail.com";
   const email=auth.currentUser?.email;
+  const signoutHandler=()=>{
+    auth.signOut().then(()=>{
+      navigation.navigate("Login");
+      Toast.show(`Logged Out Successfully`, {duration:Toast.durations.SHORT,animation: true, hideOnPress: true,})
+      // console.log("Logged in with: ",user.email)
+    }).catch(error=>alert(error.message))
+  }
 
   useEffect(()=>{
     navigation.setOptions({
@@ -26,21 +35,16 @@ const EventsListScreen = ({ navigation }) => {
 
         </TouchableOpacity>
         ),
-        // headerLeft:()=>(
-        //     <TouchableOpacity
-        //     onPress={()=>{
-        //         if(display==="All"){
-        //             setDisplay("Not Done");
-        //         } else if(display==="Not Done"){
-        //             setDisplay("Done");
-        //         } else{
-        //             setDisplay("All");
-        //         }
-                
-        //     }}>
-        //        <Text style={styles.buttonStyle}>{display}</Text>
-        //     </TouchableOpacity>
-        //     ),
+        headerLeft:()=>(
+            <TouchableOpacity
+            onPress={()=>{
+               
+              signoutHandler();
+            }}
+            style={{marginRight:20}}>
+          <SimpleLineIcons name="logout" size={24} color="black" />
+            </TouchableOpacity>
+           ),
 
     });
 

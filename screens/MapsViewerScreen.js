@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity,  ScrollView } from "react-native";
 import MapView ,{ PROVIDER_GOOGLE } from "react-native-maps";
 import { Image, ListItem } from "react-native-elements";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -64,6 +64,7 @@ const MapsViewerScreen = ({ route }) => {
     </MapView>
       </View>
       <View style={styles.details}>
+      <ScrollView>
       <ListItem style={{ padding:10}}>
 
 <ListItem.Content >
@@ -81,7 +82,7 @@ const MapsViewerScreen = ({ route }) => {
             <ListItem.Subtitle>Parking Details: {route.params._embedded.venues[0].parkingDetail}</ListItem.Subtitle>
 
 </ListItem.Content>
-</ListItem>
+</ListItem></ScrollView>
 <View  style={styles.save}>
 <TouchableOpacity
             onPress={()=>{
