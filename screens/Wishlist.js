@@ -9,8 +9,9 @@ import { auth,setupEventsListener,initEventsDB,deleteEvent } from '../fb-config/
 const Wishlist = ({ navigation }) => {
 
   const [savedevents, setsavedEvents] = useState([]);
-  const email="sapna@gmail.com";
-  // const email=auth.currentUser?.email;
+
+  // const email="talam@gmail.com";
+  const email=auth.currentUser?.email;
 
   useEffect(()=>{
 
@@ -20,8 +21,13 @@ const Wishlist = ({ navigation }) => {
 },[]);
 
 
+const data = savedevents.filter(function(item){
+  return item.email == email;});
+
+  console.log("Filtered Data", data);
+
   const renderEvents = ( { index, item}) => {
-    console.log("saved events", savedevents);
+    console.log("Filtered Data", data);
     return (
         
         <ListItem >
@@ -50,7 +56,7 @@ const Wishlist = ({ navigation }) => {
   return (
     <View>
       <FlatList
-       data={savedevents}
+       data={data}
        renderItem={renderEvents}
       />
     </View>

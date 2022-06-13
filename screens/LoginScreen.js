@@ -42,7 +42,7 @@ const LoginScreen = ({navigation}) => {
         source={require('../assets/download.png')}
         style={styles.logo}
       />
-      <Text style={styles.text}>LinkApp App</Text>
+      <Text style={styles.text}>Link up</Text>
 
       <FormInput
         labelValue={email}

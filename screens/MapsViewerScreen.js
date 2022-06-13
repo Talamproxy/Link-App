@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import MapView ,{ PROVIDER_GOOGLE } from "react-native-maps";
 import { Image, ListItem } from "react-native-elements";
 import { MaterialIcons } from '@expo/vector-icons';
+import { Marker } from "react-native-maps";
 import Toast from 'react-native-root-toast';
 import { auth,initEventsDB,  storeEventsItem } from '../fb-config/fb-credentials';
 
@@ -14,7 +15,7 @@ const MapsViewerScreen = ({ route }) => {
   // const email="sapna@gmail.com";
   const email=auth.currentUser?.email; 
 
-  const [state, setState]= useState({eventname:route.params.name,location:route.params._embedded.venues[0].name, image:route.params.images[0].url,email:email});
+  const [state, setState]= useState({eventname:route.params.name, location:route.params._embedded.venues[0].name, image:route.params.images[0].url, email:email});
 
   useEffect(()=>{
     try{
@@ -24,7 +25,21 @@ const MapsViewerScreen = ({ route }) => {
     }
 }, [])
 
+
+// const updateStateObject = (vals)=>{
+//   setState({...state, ...vals})
+// }
+
+// useEffect(()=>{
+//   if(route.params){
+//       updateStateObject ({longitude:route.params._embedded.venues[0].location.longitude, latitude:route.params._embedded.venues[0].location.latitude});
+//   }
+
+// }, [route.params]);
+
+
   console.log("Longitude is: ", route.params._embedded.venues[0].location.longitude);
+  console.log("Latitude is: ", route.params._embedded.venues[0].location.latitude);
   var longitude=route.params._embedded.venues[0].location.longitude;
   var latitude=route.params._embedded.venues[0].location.latitude;
   var latitudeInt=parseInt(latitude);
@@ -37,13 +52,16 @@ const MapsViewerScreen = ({ route }) => {
       provider={PROVIDER_GOOGLE}
       showsUserLocation={true}  
     initialRegion={{
-      latitude:42.9624,
-      longitude:-85.6716,
-      latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
+      latitude:latitudeInt,
+      longitude:longitudeInt,
+      latitudeDelta: 3,
+    longitudeDelta: 3,
       
-    }}
-  />
+    }}>
+      <Marker
+  coordinate={{ latitude : latitudeInt , longitude : longitudeInt }}
+/>
+    </MapView>
       </View>
       <View style={styles.details}>
       <ListItem style={{ padding:10}}>
@@ -56,6 +74,12 @@ const MapsViewerScreen = ({ route }) => {
 />
   <ListItem.Title>Title: {route.params.name}</ListItem.Title>
   <ListItem.Subtitle>{route.params._embedded.venues[0].name}</ListItem.Subtitle>
+  <ListItem.Subtitle>Start Time: {route.params.dates.start.localTime}</ListItem.Subtitle>
+            <ListItem.Subtitle>Date: {route.params.dates.start.localDate}</ListItem.Subtitle>
+            <ListItem.Subtitle>Price Range : {route.params.priceRanges[0].min} USD - {route.params.priceRanges[0].max} USD </ListItem.Subtitle>
+            <ListItem.Subtitle>Contact Details: {route.params._embedded.venues[0].boxOfficeInfo.phoneNumberDetail}</ListItem.Subtitle>
+            <ListItem.Subtitle>Parking Details: {route.params._embedded.venues[0].parkingDetail}</ListItem.Subtitle>
+
 </ListItem.Content>
 </ListItem>
 <View  style={styles.save}>

@@ -9,8 +9,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 const EventsListScreen = ({ navigation }) => {
 
   const [events, setEvents] = useState([]);
-  const email="sapna@gmail.com";
-  // const email=auth.currentUser?.email;
+  // const email="sapna@gmail.com";
+  const email=auth.currentUser?.email;
 
   useEffect(()=>{
     navigation.setOptions({
@@ -73,6 +73,9 @@ const EventsListScreen = ({ navigation }) => {
           <ListItem.Content>
             <ListItem.Title>{item.name}</ListItem.Title>
             <ListItem.Subtitle>{item._embedded.venues[0].name}</ListItem.Subtitle>
+            <ListItem.Subtitle>Start Time: {item.dates.start.localTime}</ListItem.Subtitle>
+            <ListItem.Subtitle>Date: {item.dates.start.localDate}</ListItem.Subtitle>
+         
           </ListItem.Content>
           <ListItem.Chevron />
         </ListItem>

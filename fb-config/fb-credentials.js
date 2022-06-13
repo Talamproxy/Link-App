@@ -34,7 +34,7 @@ if (firebase.apps.length===0){
 
 const auth=firebase.auth()
 export function initEventsDB(){
-  initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 } 
 export function storeEventsItem(item){
 
