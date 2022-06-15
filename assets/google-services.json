@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "392297728368",
+    "firebase_url": "https://reminders-a2191-default-rtdb.firebaseio.com",
+    "project_id": "reminders-a2191",
+    "storage_bucket": "reminders-a2191.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392297728368:android:0e86b6e1c532b495ff27b5",
+        "android_client_info": {
+          "package_name": "com.linkapp.events"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392297728368-qthm8p36r7fm6fau0g5nc7l1e8gs8jhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv1Ws5lnaJzxeZdRsaMqtOzu58R0mx0mc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392297728368-qthm8p36r7fm6fau0g5nc7l1e8gs8jhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

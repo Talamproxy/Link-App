@@ -24,10 +24,10 @@ const Wishlist = ({ navigation }) => {
 const data = savedevents.filter(function(item){
   return item.email == email;});
 
-  console.log("Filtered Data", data);
+  // console.log("Filtered Data", data);
 
   const renderEvents = ( { index, item}) => {
-    console.log("Filtered Data", data);
+    // console.log("Filtered Data", data);
     return (
         
         <ListItem >

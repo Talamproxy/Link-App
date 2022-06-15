@@ -38,8 +38,8 @@ const MapsViewerScreen = ({ route }) => {
 // }, [route.params]);
 
 
-  console.log("Longitude is: ", route.params._embedded.venues[0].location.longitude);
-  console.log("Latitude is: ", route.params._embedded.venues[0].location.latitude);
+  // console.log("Longitude is: ", route.params._embedded.venues[0].location.longitude);
+  // console.log("Latitude is: ", route.params._embedded.venues[0].location.latitude);
   var longitude=route.params._embedded.venues[0].location.longitude;
   var latitude=route.params._embedded.venues[0].location.latitude;
   var latitudeInt=parseInt(latitude);
@@ -77,9 +77,10 @@ const MapsViewerScreen = ({ route }) => {
   <ListItem.Subtitle>{route.params._embedded.venues[0].name}</ListItem.Subtitle>
   <ListItem.Subtitle>Start Time: {route.params.dates.start.localTime}</ListItem.Subtitle>
             <ListItem.Subtitle>Date: {route.params.dates.start.localDate}</ListItem.Subtitle>
-            <ListItem.Subtitle>Price Range : {route.params.priceRanges[0].min} USD - {route.params.priceRanges[0].max} USD </ListItem.Subtitle>
-            <ListItem.Subtitle>Contact Details: {route.params._embedded.venues[0].boxOfficeInfo.phoneNumberDetail}</ListItem.Subtitle>
+            {/* <ListItem.Subtitle>Price Range : {route.params.priceRanges[0]?.min} USD - {route.params?.priceRanges[0].max} USD </ListItem.Subtitle> */}
+            <ListItem.Subtitle>Contact Details: {route.params._embedded.venues[0].boxOfficeInfo?.phoneNumberDetail}</ListItem.Subtitle>
             <ListItem.Subtitle>Parking Details: {route.params._embedded.venues[0].parkingDetail}</ListItem.Subtitle>
+            <ListItem.Subtitle>NOTE : {route.params.pleaseNote} </ListItem.Subtitle>
 
 </ListItem.Content>
 </ListItem></ScrollView>

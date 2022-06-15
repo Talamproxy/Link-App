@@ -42,7 +42,7 @@ const LoginScreen = ({navigation}) => {
         source={require('../assets/download.png')}
         style={styles.logo}
       />
-      <Text style={styles.text}>Link up</Text>
+      <Text style={styles.text}>Link Up GRR</Text>
 
       <FormInput
         labelValue={email}

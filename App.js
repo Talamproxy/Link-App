@@ -38,7 +38,7 @@ export default function App() {
         <Stack.Screen
           name="Event List"
           component={EventsListScreen}
-          options={{ title: "Link-Up" }}
+          options={{ title: "Link Up GRR" }}
         />
         <Stack.Screen name="Map Viewer"  component={MapsViewerScreen} />
      <Stack.Screen name="Wishlist"  component={Wishlist} />
