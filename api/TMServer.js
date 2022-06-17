@@ -29,4 +29,13 @@ export const getEvents = async (callback) => {
   callback(response.data);  
 };
 
+
+export const getCitiesAPI = async (callback,city) => { 
+
+  const response = await YTServer.get(
+    `events.json?city=${city}&apikey=9irEViQDovsD42clqG99FQMAH5t3AEnv`
+  );
+  callback(response.data);  
+};
+
 export default YTServer;

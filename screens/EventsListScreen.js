@@ -2,11 +2,12 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native
 import { Image, ListItem } from "react-native-elements";
 import React, { useEffect, useState } from 'react';
 import { BaseRouter } from '@react-navigation/native';
-import { getEvents } from '../api/TMServer'
+import { getEvents,getCitiesAPI } from '../api/TMServer'
 import { auth } from '../fb-config/fb-credentials';
 import { MaterialIcons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 import Toast from 'react-native-root-toast';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const EventsListScreen = ({ navigation }) => {
 
@@ -50,6 +51,30 @@ const EventsListScreen = ({ navigation }) => {
 
 });
 
+const [open, setOpen] = useState(false);
+const [cities, setCities] = useState([
+  {label: 'Chicago', value: 'chicago'},
+  {label: 'Atlanta', value: 'atlanta'},
+  {label: 'Grand Rapids', value: 'grand%20rapids'},
+  {label: 'New York', value: 'new%20york'},
+  {label: 'Dallas', value: 'Dallas'},
+  {label: 'Tampa', value: 'Tampa'},
+  {label: 'Phoenix', value: 'Phoenix'},
+  {label: 'Miami', value: 'Miami'},
+  {label: 'Indianapolis', value: 'Indianapolis'},
+  {label: 'Toledo', value: 'Toledo'},
+  {label: 'Charlotte', value: 'Charlotte'},
+  {label: 'Detroit', value: 'Detroit'},
+  {label: 'Boston', value: 'Boston'},
+  {label: 'Seattle', value: 'Seattle'},
+  {label: 'Denver', value: 'Denver'},
+  {label: 'Baltimore', value: 'Baltimore'},
+  {label: 'Portland', value: 'Portland'},
+  {label: 'Tulsa', value: 'Tulsa'},
+  {label: 'Milwaukee', value: 'Milwaukee'},
+  {label: 'Philadelphia', value: 'Philadelphia'},
+]);
+
   useEffect(() => {
     getEvents((data) => {
       // console.log("received: ", data._embedded.events);
@@ -63,11 +88,14 @@ const EventsListScreen = ({ navigation }) => {
 
   const renderEvents = ( { index, item}) => {
     return (
+
+      
       <TouchableOpacity
         onPress={() => {
           console.log("This is embedded", item._embedded.venues[0].name)
           navigation.navigate("Map Viewer", item); 
         }}>
+          
         <ListItem key={index}>
 
           <Image 
@@ -89,6 +117,21 @@ const EventsListScreen = ({ navigation }) => {
 
   return (
     <View>
+      <View style={{ marginRight:10, marginLeft:10, marginTop:10, marginBottom:10}}>
+      <DropDownPicker
+        zIndex={2000}
+        zIndexInverse={2000}
+        open={open}
+        setOpen={setOpen}
+        items={cities}
+        setItems={setCities}
+        placeholder="Select a city"
+        onSelectItem={selectitem=>{ getCitiesAPI((data) => {
+         setEvents(data._embedded.events);
+          },
+          selectitem.value)}}
+        />
+</View>
       <FlatList
         data={events}
         extraData={events}

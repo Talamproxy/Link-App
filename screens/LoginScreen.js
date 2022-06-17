@@ -39,10 +39,9 @@ const LoginScreen = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Image
-        source={require('../assets/download.png')}
+        source={require('../assets/linkapp.png')}
         style={styles.logo}
       />
-      <Text style={styles.text}>Link Up GRR</Text>
 
       <FormInput
         labelValue={email}

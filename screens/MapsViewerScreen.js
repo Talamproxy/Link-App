@@ -50,7 +50,6 @@ const MapsViewerScreen = ({ route }) => {
         <MapView
       style={{height:'100%', width:'100%',}}
       provider={PROVIDER_GOOGLE}
-      showsUserLocation={true}  
     initialRegion={{
       latitude:latitudeInt,
       longitude:longitudeInt,
