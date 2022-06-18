@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import { getDatabase, push, ref,onValue, remove} from "firebase/database";
+import { fb_key } from './fb_key';
 // import * as firebase from 'firebase/compat/app';
 // import 'firebase/compat/auth';
 
@@ -11,10 +12,11 @@ import { getDatabase, push, ref,onValue, remove} from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBzsqL9RSRYGm353ssstKFS-U9JnWt4SQI",
+  apiKey: fb_key,
   authDomain: "reminders-a2191.firebaseapp.com",
   databaseURL: "https://reminders-a2191-default-rtdb.firebaseio.com",
   projectId: "reminders-a2191",
