@@ -24,7 +24,7 @@ YTServer.interceptors.request.use(
 
 export const getEvents = async (callback) => {
   const response = await YTServer.get(
-    `events.json?city=grand%20rapids&apikey=9irEViQDovsD42clqG99FQMAH5t3AEnv`
+    `events.json?city=grand%20rapids&apikey=${TM_KEY}`
   );
   callback(response.data);  
 };
