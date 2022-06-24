@@ -34,7 +34,7 @@ Cross-platform Mobile Application (Android and iOS) built in react native and us
   <a href="#how-to-use">How To Use</a> •
   <a href="#download">Download</a> •
   <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
+  <a href="#related">Related</a>
 </p>
 
 ## Key Features
