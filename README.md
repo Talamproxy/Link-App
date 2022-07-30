@@ -7,7 +7,14 @@
   ![IOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
 </p>
   
-  
+  <p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a>
+</p>
+
 Cross-platform Mobile Application (Android and iOS) built in react native and uses Axios library to fetch data from Ticket master API in order to show users all upcoming top events happening around their location. It is also intergrated with Firebase Mobile backend and Firebase analytics to capture user statistics.
 
 
@@ -27,15 +34,6 @@ Cross-platform Mobile Application (Android and iOS) built in react native and us
 ![search](https://user-images.githubusercontent.com/40372827/175556428-5d5ed74f-97bd-405c-aead-0d29900ad71e.jpg)
 ![bookmarks](https://user-images.githubusercontent.com/40372827/175556446-4a7759fb-368e-4052-8edd-307e54d6debe.jpg) -->
 
-
-
-<p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a>
-</p>
 
 ## Key Features
 * Cross-Platform
